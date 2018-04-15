@@ -1,0 +1,211 @@
+<!doctype html>
+<html>
+<head>
+<script src='custom.js'></script>
+<style>
+x-title{
+    color:red;
+    
+}
+
+</style>
+<script>
+addEventListener('load',function(){
+ $("img[alt='www.000webhost.com']").parentNode.outerHTML="";
+//(navigator.userAgent);
+if(navigator.userAgent.search('Android') != -1){
+addEventListener('click',()=>nextFrame());
+		var div = document.crateElement('div');
+        div.style['z-index']='10px';
+        var b1 = document.createElement('button');
+        var b2 = document.createElement('button');
+        b1.innerHTML = 'voltar';
+        b2.innerHTML = 'avançar';
+        b1.addEventListener('click',()=>{
+            previousFrame();
+        });
+        b2.addEventListener('click',()=>{
+            nextFrame();
+        });
+        div.appendChild(b1);
+        div.appendChild(b2);
+        var body = document.body;
+        body.appendChild(div);
+    }
+});
+</script>
+<script>
+
+$ = (id)=>document.querySelector(id);
+var all = [];
+var atual = 0;
+var addtime = false;
+
+function Watch(){
+    var date = new Date();
+    var hr = date.getHours();
+    var min = date.getMinutes();
+    return (hr<10?"0":"")+hr+":"+(min<10?"0":"")+min;
+}
+
+var app1 = new customElement('x-frame',(element)=>{
+	var st = element.style;
+	var body = document.body.style;
+	//alert(body);
+	st.position = 'fixed';
+	st.textAlign = 'justify';
+	st.fontFamily = 'arial';
+	st.webkitBorderRadius = '15px';
+	st.marginLeft = "10%";
+	st.top = 0;
+	st.left = 0;
+	st.right = "10%";
+	st.bottom = 0;
+	st.padding = '1% 0 0 1%';
+	st.overflow = "auto";
+	st.display = 'block';
+	st.backgroundColor = 'white';
+	st.display = all.length == 0?'block':'none';
+	
+	
+	all.push(element);
+	
+	element.addEventListener('click',()=>{
+		//nextFrame();
+	});
+	element.addEventListener('touchend',()=>{
+		//previousFrame();
+	});
+	//element.innerHTML = "frame";
+});
+
+function nextFrame(){
+	
+	if(atual == all.length - 1){
+	}else{
+	  all[atual].style.display = 'none';
+	  atual += 1;
+	  all[atual].style.display = 'block';
+	}
+}
+function previousFrame(){
+	if(atual == 0){
+		
+	}else{
+		all[atual].style.display = 'none';
+		atual -= 1;
+		all[atual].style.display = 'block';
+	}
+}
+var app2 = new customElement('x-title',(element)=>{
+	var st = element.style;
+	//st.color = 'blue';
+	var text = element.innerHTML;
+	//alert(text);
+	element.innerHTML = '<h1>'+text+ '</h1><hr>';
+});
+
+var app3 = new customElement('x-list',(element)=>{
+	
+});
+var app4 = new customElement('x-item',(element)=>{
+	element.innerHTML = '<li>'+element.innerHTML+'</li>';
+});
+var app5 = new customElement('x-image',(element)=>{
+	var src = element.getAttribute('src');
+	var width = element.getAttribute('width');
+	var height = element.getAttribute('height');
+	element.innerHTML = "<img src='"+src+"' width='"+width+"' height='"+height+"'>";
+});
+
+var app6 = new customElement('x-video',(element)=>{
+	var src = element.getAttribute('src');
+	var width = element.getAttribute('width');
+	var height = element.getAttribute('height');
+	element.innerHTML = "<video controls src='"+src+"' width='"+width+"' height='"+height+"'></video>";
+});
+
+var app7 = new customElement('x-settup',(element)=>{
+    
+});
+var app8 = new customElement('x-enable',(element)=>{
+    var time = element.getAttribute('time');
+    if(time != null){
+        var time = $('#time');
+        time.style.position= 'absolute';
+        time.style.right = '2%';
+	    time.innerHTML = Watch();
+	    var watc = document.createElement('h2');
+	    setInterval(function(){
+	        time.innerHTML = Watch();
+	    },1000);
+	    
+    }
+});
+
+addEventListener('load',()=>{
+	//alert(screen.width);
+	//alert($('x-frame').outerHTML);
+	t = [];
+	for(var i = 0 in $('x-frame')){
+		t.push(i);
+	}
+	//alert(t);
+});
+addEventListener('keyup',(event)=>{
+    var key = event.keyCode;
+    if(key == 37 || key == 40){
+        previousFrame();
+    }else if(key == 38 || key == 39 || key == 13){
+        nextFrame();
+    }
+});
+</script>
+<style>
+body{
+	width:100%;
+	background-color:white;
+}
+
+</style>
+</head>
+<body >
+    <x-settup>
+      <x-enable time></x-enable>  
+    </x-settup>
+<time id="time"></time>
+<x-frame>
+<x-title> O que é Avaliar?</x-title>
+
+<x-list>
+    <x-image src="elefante.jpg"></x-image>
+<x-item/> love</x-item>
+<x-item/> amor</x-item>
+</x-list>
+
+</x-frame>
+
+<x-frame>
+<x-title>love</x-title>
+<x-list>
+<x-item>ok</x-item>
+<x-item>ty</x-item>
+</x-list>
+<x-video src='avaliacao.mp4' ></video>
+</x-image>
+</x-frame>
+
+<x-frame>
+<x-title>tyjj</x-title>
+A avaliação educacional é uma tarefa didática necessária e permanente no trabalho do professor, ela deve acompanhar todos os passos do processo de ensino e aprendizagem. É através dela que vão sendo comparados os resultados obtidos no decorrer do trabalho conjunto do professor e dos alunos, conforme os objetivos propostos, a fim de verificar progressos, dificuldades e orientar o trabalho para as correções necessárias. A avaliação insere-se não só nas funções didáticas, mas também na própria dinâmica e estrutura do Processo de Ensino e Aprendizagem (PEA).
+
+A avaliação é um elemento muito importante no processo de ensino e aprendizagem, porque é através dela que se consegue fazer uma análise dos conteúdos tratados num dado capítulo ou unidade temática. A avaliação reflete sobre o nível do trabalho do professor como do aluno, por isso a sua realização não deve apenas culminar com atribuição de notas aos alunos, mas sim deve ser utilizada como um instrumento de coleta de dados sobre o aproveitamento dos alunos. Esta, porém, determina o grau da assimilação dos conceitos e das técnicas/normas; ajudam o professor a melhorar a sua metodologia de trabalho, também ajuda os alunos a desenvolverem a autoconfiança na aprendizagem do aluno; determina o grau de assimilação dos conceitos.
+</x-frame>
+
+<x-frame>
+<x-title>macumba</x-title>
+maetli
+</x-frame>
+
+</body>
+</html>
